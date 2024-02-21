@@ -10,7 +10,7 @@ public enum PoolType
     MeleeAttack,
     Slow,
     Arrow,
-    HeadShot, // 제거 가능
+    HeadShot, 
     Magic,
     Meteor,
     Lamping,
@@ -18,7 +18,7 @@ public enum PoolType
     BigMelee,
     ChainLightning,
     HitEffect,
-    SwordMan = 1 << 8, // hero start offset
+    SwordMan = 1 << 8, 
     BowMan,
     WandMan,
     SwordHero,
@@ -46,7 +46,6 @@ public enum PoolType
     HorrorVfx,
 }
 
-// https://starlightbox.tistory.com/84
 public class ObjectPoolManager : MonoBehaviour
 {
     private const int HeroStartOffset = (int)PoolType.SwordMan;
@@ -58,10 +57,8 @@ public class ObjectPoolManager : MonoBehaviour
     {
         public PoolType type;
 
-        // 오브젝트 풀에서 관리할 오브젝트
         public GameObject perfab;
 
-        // 몇개를 미리 생성 해놓을건지
         public int count;
     }
 
@@ -81,21 +78,17 @@ public class ObjectPoolManager : MonoBehaviour
         }
     }
 
-    // 오브젝트풀 매니저 준비 완료표시
     public bool IsLoading { get; private set; }
     private bool _isInit = false;
 
     [SerializeField] private GameObject locate;
     [SerializeField] private ObjectInfo[] objectInfos;
 
-    // 생성할 오브젝트의 key값지정을 위한 변수
     private PoolType objectType;
 
-    // 오브젝트풀들을 관리할 딕셔너리
     private Dictionary<PoolType, IObjectPool<GameObject>> objectPoolDic =
         new Dictionary<PoolType, IObjectPool<GameObject>>();
 
-    // 오브젝트풀에서 오브젝트를 새로 생성할때 사용할 딕셔너리
     private Dictionary<PoolType, GameObject> goDic = new Dictionary<PoolType, GameObject>();
 
     private void Awake()
@@ -163,7 +156,6 @@ public class ObjectPoolManager : MonoBehaviour
         goDic.Add(info.type, info.perfab);
         objectPoolDic.Add(info.type, pool);
 
-        // 미리 오브젝트 생성 해놓기
         for (int i = 0; i < info.count; i++)
         {
             objectType = info.type;
@@ -172,7 +164,6 @@ public class ObjectPoolManager : MonoBehaviour
         }
     }
 
-    // 생성
     private GameObject CreatePooledItem()
     {
         if (locate == null)
@@ -185,19 +176,16 @@ public class ObjectPoolManager : MonoBehaviour
         return poolGo;
     }
 
-    // 대여
     private void OnTakeFromPool(GameObject poolGo)
     {
         poolGo.SetActive(true);
     }
 
-    // 반환
     private void OnReturnedToPool(GameObject poolGo)
     {
         poolGo.SetActive(false);
     }
 
-    // 삭제
     private void OnDestroyPoolObject(GameObject poolGo)
     {
         Destroy(poolGo);

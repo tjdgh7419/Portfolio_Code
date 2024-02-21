@@ -24,7 +24,6 @@ public class UI_StarCatch : UI_Popup
     enum Images
     {
         GraveStoneImage,
-        //StarCatchBarImage,
         StarImage,
         StarCatchDifficultyBGImage,
         Soul1Image,
