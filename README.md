@@ -46,9 +46,9 @@
 ## :clipboard: 구현 코드
 클릭 시 코드가 있는 파일로 이동합니다.
 
-[GameManager - 싱글톤 패턴](https://github.com/tjdgh7419/Portfolio_Code/tree/main/SafeHome/Managers/GameManager)
+#### [GameManager - 싱글톤 패턴](https://github.com/tjdgh7419/Portfolio_Code/tree/main/SafeHome/Managers/GameManager)
 
-[아이템 데이터 - 스크립터블 오브젝트](https://github.com/tjdgh7419/Portfolio_Code/tree/main/SafeHome/ItemData)
+#### [아이템 데이터 - 스크립터블 오브젝트](https://github.com/tjdgh7419/Portfolio_Code/tree/main/SafeHome/ItemData)
 
 
  ## :pushpin: 프로젝트 소개
