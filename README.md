@@ -25,17 +25,17 @@
 
 ## :clipboard: 구현 코드
 
-####  [장비 - 컴포지션 패턴](https://github.com/tjdgh7419/Portfolio_Code/tree/main/GhostOnly/Equipment)
+####  [장비](https://github.com/tjdgh7419/Portfolio_Code/tree/main/GhostOnly/Equipment)
 
 #### [오브젝트 풀링](https://github.com/tjdgh7419/Portfolio_Code/tree/main/GhostOnly/ObjectPoolling)
 
-#### [사운드 - 오브젝트 풀링](https://github.com/tjdgh7419/Portfolio_Code/tree/main/GhostOnly/Sound)
+#### [사운드](https://github.com/tjdgh7419/Portfolio_Code/tree/main/GhostOnly/Sound)
 
-#### [물품 선택 - Action](https://github.com/tjdgh7419/Portfolio_Code/tree/main/GhostOnly/SelectItem)
+#### [물품 선택](https://github.com/tjdgh7419/Portfolio_Code/tree/main/GhostOnly/SelectItem)
 
-#### [묘비 미니게임 - DOTween](https://github.com/tjdgh7419/Portfolio_Code/tree/main/GhostOnly/StartCatch(GraveStone))
+#### [묘비 : 영혼 수확](https://github.com/tjdgh7419/Portfolio_Code/tree/main/GhostOnly/StartCatch(GraveStone))
 
-#### [스카우터 미니게임 - 상태 머신](https://github.com/tjdgh7419/Portfolio_Code/tree/main/GhostOnly/ScouterStateMachine)
+#### [미니 게임 : 스카우터](https://github.com/tjdgh7419/Portfolio_Code/tree/main/GhostOnly/ScouterStateMachine)
 
 
 ## :pushpin: 프로젝트 소개
@@ -58,9 +58,9 @@
 
 ## :clipboard: 구현 코드
 
-#### [GameManager - 싱글톤 패턴](https://github.com/tjdgh7419/Portfolio_Code/tree/main/SafeHome/Managers/GameManager)
+#### [GameManager](https://github.com/tjdgh7419/Portfolio_Code/tree/main/SafeHome/Managers/GameManager)
 
-#### [아이템 데이터 - 스크립터블 오브젝트](https://github.com/tjdgh7419/Portfolio_Code/tree/main/SafeHome/ItemData)
+#### [아이템 데이터](https://github.com/tjdgh7419/Portfolio_Code/tree/main/SafeHome/ItemData)
 
 
  ## :pushpin: 프로젝트 소개
@@ -83,6 +83,6 @@
 
 ## :clipboard: 구현 코드
 
-#### [인벤토리 - MVC 패턴](https://github.com/tjdgh7419/Portfolio_Code/tree/main/ProjectN/Inventory)
+#### [인벤토리](https://github.com/tjdgh7419/Portfolio_Code/tree/main/ProjectN/Inventory)
 
 #### [UIManager](https://github.com/tjdgh7419/Portfolio_Code/tree/main/ProjectN/UIManager)
