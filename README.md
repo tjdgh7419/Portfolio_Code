@@ -24,7 +24,7 @@
 
 
 ## :clipboard: 구현 코드
-클릭 시 코드가 있는 파일로 이동합니다.
+
 ####  [장비 - 컴포지션 패턴](https://github.com/tjdgh7419/Portfolio_Code/tree/main/GhostOnly/Equipment)
 
 #### [오브젝트 풀링](https://github.com/tjdgh7419/Portfolio_Code/tree/main/GhostOnly/ObjectPoolling)
@@ -57,7 +57,6 @@
 - 아이템, 자원 채취, 인벤토리, 상호작용, 장비 
 
 ## :clipboard: 구현 코드
-클릭 시 코드가 있는 파일로 이동합니다.
 
 #### [GameManager - 싱글톤 패턴](https://github.com/tjdgh7419/Portfolio_Code/tree/main/SafeHome/Managers/GameManager)
 
@@ -83,7 +82,6 @@
 - 인벤토리, 창고, UI, 데이터
 
 ## :clipboard: 구현 코드
-클릭 시 코드가 있는 파일로 이동합니다.
 
 #### [인벤토리 - MVC 패턴](https://github.com/tjdgh7419/Portfolio_Code/tree/main/ProjectN/Inventory)
 
