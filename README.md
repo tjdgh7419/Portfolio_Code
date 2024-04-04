@@ -5,6 +5,7 @@
 
  ## :pushpin: 프로젝트 소개
 유니티를 기반으로 제작한 2D 디펜스 게임입니다. 해골에 빙의하여 장비를 장착하고 몰려오는 영웅을 막아내며 제단의 영혼을 모두 채워야 합니다.
+GitHub : https://github.com/Dream-for-sever-cost/GhostOnly-Removed-paid-assets-
 
 ![main](https://github.com/tjdgh7419/Algorithm/assets/70570791/c192bcea-133f-4810-a09e-31db89aeeecc)
 
@@ -16,7 +17,7 @@
 - IDE - Visual Studio, Unity
 
 ### :raising_hand: 멤버구성
-강성호, 윤지연, 김민상, 조범준, 김대열(5명)
+- 강성호, 윤지연, 김민상, 조범준, 김대열(5명)
 
 ### :wrench: 담당 기능
 - 강성호 - 인트로, 게임 결과창, 사운드, 묘비: 영혼 수확, 장비, 미니맵, DOTween, 게임 목표(로직), 스카우터 미니게임
