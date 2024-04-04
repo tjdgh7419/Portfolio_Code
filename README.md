@@ -7,7 +7,7 @@
 유니티를 기반으로 제작한 2D 디펜스 게임입니다.<br/> 
 해골에 빙의하여 장비를 장착하고 몰려오는 영웅을 막아내며 제단의 영혼을 모두 채워야 합니다.<br/>
 <br/>
-GitHub : https://github.com/kimphysicsman/portfolio?tab=readme-ov-file
+[GitHub](https://github.com/Dream-for-sever-cost/GhostOnly-Removed-paid-assets-)
 
 ![main](https://github.com/tjdgh7419/Algorithm/assets/70570791/c192bcea-133f-4810-a09e-31db89aeeecc)
 
