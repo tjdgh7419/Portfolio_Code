@@ -19,7 +19,7 @@
 팀원 : 강성호, 윤지연, 김민상, 조범준, 김대열(5명)
 
 ### :wrench: 담당 기능
-- 강성호 - 인트로, 게임 결과창, 사운드, 묘비: 영혼 수확, 장비, 미니맵, DOTween, 게임 목표(로직)
+- 강성호 - 인트로, 게임 결과창, 사운드, 묘비: 영혼 수확, 장비, 미니맵, DOTween, 게임 목표(로직), 스카우터 미니게임
 
 
 ## :clipboard: 구현 코드
@@ -31,8 +31,6 @@
 #### [사운드 - 오브젝트 풀링](https://github.com/tjdgh7419/Portfolio_Code/tree/main/GhostOnly/Sound)
 
 #### [물품 선택 - Action](https://github.com/tjdgh7419/Portfolio_Code/tree/main/GhostOnly/SelectItem)
-
-#### [Unity Analytics](https://github.com/tjdgh7419/Portfolio_Code/tree/main/GhostOnly/Analytics)
 
 #### [묘비 미니게임 - DOTween](https://github.com/tjdgh7419/Portfolio_Code/tree/main/GhostOnly/StartCatch(GraveStone))
 
@@ -49,6 +47,12 @@
 
 ### :hammer: 개발 환경 
 - IDE - Visual Studio, Unity
+
+### :raising_hand: 멤버구성
+팀원 : 강성호, 윤지연, 김민상, 조범준, 김대열(5명)
+
+### :wrench: 담당 기능
+- 강성호 - 인트로, 게임 결과창, 사운드, 묘비: 영혼 수확, 장비, 미니맵, DOTween, 게임 목표(로직), 스카우터 미니게임
 
 ## :clipboard: 구현 코드
 클릭 시 코드가 있는 파일로 이동합니다.
@@ -68,6 +72,12 @@
 
 ### :hammer: 개발 환경 
 - IDE - Visual Studio, Unity
+
+### :raising_hand: 멤버구성
+팀원 : 강성호, 윤지연, 김민상, 조범준, 김대열(5명)
+
+### :wrench: 담당 기능
+- 강성호 - 인트로, 게임 결과창, 사운드, 묘비: 영혼 수확, 장비, 미니맵, DOTween, 게임 목표(로직), 스카우터 미니게임
 
 ## :clipboard: 구현 코드
 클릭 시 코드가 있는 파일로 이동합니다.
