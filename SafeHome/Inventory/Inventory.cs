@@ -18,24 +18,23 @@ public class Inventory : MonoBehaviour
 
 	[Header("Selected Item")]
 	private ItemSlot _selectedItem;
-	private int selectedItemIndex;
+	private int _selectedItemIndex;
 	public TextMeshProUGUI selectedItemName;
 	public TextMeshProUGUI selectedItemDescription;
 	public GameObject useButton;
 	public GameObject equipButton;
 	public GameObject unEquipButton;
 	public GameObject dropButton;
-
 	private ItemData _pickaxe;
 	private ItemData _hammer;
 	private int _curEquipIndex;
 	private PlayerMovement _controller;
+
 	[Header("Events")]
 	public UnityEvent onOpenInventory;
 	public UnityEvent onCloseInventory;
-	// Start is called before the first frame update
-
 	private Dictionary<ItemData, int> _ItemTotalCount;
+
 	private void Awake()
 	{
 		_controller = GetComponent<PlayerMovement>();
@@ -161,7 +160,7 @@ public class Inventory : MonoBehaviour
 			return;
 
 		_selectedItem = slots[index];
-		selectedItemIndex = index;
+		_selectedItemIndex = index;
 
 		selectedItemName.text = _selectedItem.item.itemName;
 		selectedItemDescription.text = _selectedItem.item.description;
@@ -248,12 +247,12 @@ public class Inventory : MonoBehaviour
 			UnEquip(_curEquipIndex);
 		}
 
-		uiSlot[selectedItemIndex].equipped = true;
+		uiSlot[_selectedItemIndex].equipped = true;
 		
 		GameManager.Instance._equipManager.EquipNew(_selectedItem.item);
 		UpdateUI();
 		SoundManager.PlayRandomClip(_selectedItem.item.UseAudio,transform.position);
-		SelectItem(selectedItemIndex);
+		SelectItem(_selectedItemIndex);
 	}
 
 	void UnEquip(int index)
@@ -262,7 +261,7 @@ public class Inventory : MonoBehaviour
 		GameManager.Instance._equipManager.UnEquip();
 		UpdateUI();
 
-		if(selectedItemIndex == index)
+		if(_selectedItemIndex == index)
 		{
 			SelectItem(index);
 		}
@@ -270,7 +269,7 @@ public class Inventory : MonoBehaviour
 
 	public void OnUnEquipButton()
 	{
-		UnEquip(selectedItemIndex);
+		UnEquip(_selectedItemIndex);
 	}
 	public void OnDropButton()
 	{
@@ -283,9 +282,9 @@ public class Inventory : MonoBehaviour
 
 		if (_selectedItem.quantity <= 0)
 		{
-			if (uiSlot[selectedItemIndex].equipped)
+			if (uiSlot[_selectedItemIndex].equipped)
 			{
-				UnEquip(selectedItemIndex);
+				UnEquip(_selectedItemIndex);
 			}
 
 			_selectedItem.item = null;

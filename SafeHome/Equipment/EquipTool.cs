@@ -20,6 +20,7 @@ public class EquipTool : Equip
 	
 	private Animator animator;
 	private Camera _cam;
+
 	private bool attacking;
 	private bool isHit;
 

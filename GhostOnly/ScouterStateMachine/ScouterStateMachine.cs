@@ -96,12 +96,6 @@ public class ScouterStateMachine : StateMachine<ScouterBaseState.EScouterState>
 
     public Vector3 GetNewSpawnPosition()
     {
-        //float angle = UnityEngine.Random.Range(0, 360) * Mathf.Deg2Rad;
-
-        //float x = _defaultLocate.x + SPAWN_RANGE * Mathf.Cos(angle);
-        //float y = _defaultLocate.y + SPAWN_RANGE * Mathf.Sin(angle);
-
-        //return new Vector3(x, y, _defaultLocate.z);
         return (Vector2)DEFAULT_LOCATE + UnityEngine.Random.insideUnitCircle * Constants.Scouter.SpawnRange;
     }
 }

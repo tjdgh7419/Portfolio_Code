@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Diagnostics;
 
-public class UI_Manager : MonoBehaviour
+public class UI_Manager : Singleton<UI_Manager>
 {
 	private List<UI_Popup> _popupList = new List<UI_Popup>();
 
@@ -93,7 +93,6 @@ public class UI_Manager : MonoBehaviour
 		T popupUI = popupPrefab.GetComponent<T>();
 		if(popupUI == null) popupUI = popupPrefab.AddComponent<T>();
 		
-		//_popupStack.Push(popupUI);
 		_popupList.Add(popupUI);
 
 		if (parent != null) popupPrefab.transform.SetParent(parent);
@@ -119,7 +118,7 @@ public class UI_Manager : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log("Not Contains Popup");
+			Debug.Log("Popup information is not included");
 			return;
 		}
 	}

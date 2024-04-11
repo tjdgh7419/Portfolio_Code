@@ -1,34 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using UnityEditor.Build.Pipeline;
 using UnityEngine;
+using UnityEngine.Assertions;
 
-public class InventoryController : MonoBehaviour
+public class InventoryController : StorageController
 {
-	[SerializeReference] public List<ItemSlotInfo> items = new List<ItemSlotInfo>();
-
-	private int _inventorySize = 10;
-	private int _testWheel = 0;
-
-	private InventoryModel _inventoryModel;
-	private InventoryView _inventoryView;
-
 	[Header("Quick Slot")]
 	[SerializeField] private List<QuickSlot> quickSlots = new List<QuickSlot>();
 
-	public void Start()
+	private InventoryModel _inventoryModel;
+	private InventoryView _inventoryView;
+	private ItemPanel _curSelectedPanel;
+	private Equipment _equipment;
+
+	private int _testWheel = 0;
+
+	private void Update()
 	{
-		_inventoryModel = new InventoryModel(_inventorySize, items, quickSlots);
-		InitializedInventoryView();
+		if (Input.GetKeyDown(KeyCode.F))
+		{
+			_inventoryView.UpdateList();
+		}
+	}
 
-		_inventoryModel.OnUpdateInventory += _inventoryView.Refresh;
-
-		_inventoryModel.InitializeInventoryModel();
-
-		_inventoryModel.AddItem("Axe", 40);
-		_inventoryModel.AddItem("Carrot", 5);
-		_inventoryModel.EquipItem(quickSlots[0].quickSlotPanel);
-
-		_inventoryView.RefreshInventory();
+	public void Init(Equipment equipment)
+	{
+		_equipment = equipment;
+		SwitchSlot(0);
 	}
 
 	private void OnDestroy()
@@ -36,52 +38,113 @@ public class InventoryController : MonoBehaviour
 		_inventoryModel.OnUpdateInventory -= _inventoryView.Refresh;
 	}
 
-	private void Update()
+	public override void AddItem(string itemName, int amount)
 	{
-
-		if (Input.GetKeyDown(KeyCode.Alpha1))
-		{
-			_inventoryModel.EquipItem(quickSlots[0].quickSlotPanel);
-			_testWheel = 0;
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha2))
-		{
-			_inventoryModel.EquipItem(quickSlots[1].quickSlotPanel);
-			_testWheel = 1;
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha3))
-		{
-			_inventoryModel.EquipItem(quickSlots[2].quickSlotPanel);
-			_testWheel = 2;
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha4))
-		{
-			_inventoryModel.EquipItem(quickSlots[3].quickSlotPanel);
-			_testWheel = 3;
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha5))
-		{
-			_inventoryModel.EquipItem(quickSlots[4].quickSlotPanel);
-			_testWheel = 4;
-		}
-
-		if (Input.GetAxis("Mouse ScrollWheel") > 0 && _testWheel < quickSlots.Count - 1)
-		{
-			_testWheel++;
-			_inventoryModel.EquipItem(quickSlots[_testWheel].quickSlotPanel);
-		}
-
-		if (Input.GetAxis("Mouse ScrollWheel") < 0 && _testWheel > 0)
-		{
-			_testWheel--;
-			_inventoryModel.EquipItem(quickSlots[_testWheel].quickSlotPanel);
-		}
+		_inventoryModel.AddItem(itemName, amount);
 	}
 
-	private void InitializedInventoryView()
+	public override void InitializeStorageData()
 	{
-		_inventoryView = GetComponent<InventoryView>();
-		_inventoryView.items = items;
-		_inventoryView.quickSlots = quickSlots;
+		_inventoryModel = new InventoryModel(_storageSize, items, quickSlots);
+		_inventoryView = new InventoryView(items, quickSlots, mouse, storageMenu, itemPanel, itemPanelGrid);
+
+		_inventoryModel.OnUpdateInventory += _inventoryView.Refresh;
+
+#if UNITY_EDITOR
+		foreach (string itemName in AddItems)
+		{
+			AddItem(itemName, 1);
+		}
+#endif
+		_inventoryView.RefreshStorage();
 	}
+
+	private async void SwitchSlot(int num)
+	{
+		EquipItem(quickSlots[num].quickSlotPanel);
+		GameObject ItemObj = null;
+		if (quickSlots[num].inventorySlot.item != null)
+		{
+			Item iteminfo = quickSlots[num].inventorySlot.item;
+			var ItemObjTask = AddressableManager.Instance.LoadObjectAsync(iteminfo.PrefabPath);
+
+			await ItemObjTask;
+
+			ItemObj = ItemObjTask.Result;
+			ItemObj.TryGetComponent(out ItemObject itemObject);
+			Assert.IsNotNull(itemObject, $"{iteminfo.Name}의 prefab에 ItemObject 설정을 해주세요");
+			itemObject.ItemData = iteminfo;
+		}
+		_equipment.Equip(ItemObj);
+		_testWheel = num;
+	}
+
+	public void ScrollWhell(float input)
+	{
+		if (input > 0)
+		{
+			if (_testWheel < quickSlots.Count - 1)
+			{
+				_testWheel++;
+			}
+		}
+		else
+		{
+			if (_testWheel > 0)
+			{
+				_testWheel--;
+			}
+		}
+		SwitchSlot(_testWheel);
+	}
+
+	public void EquipItem(ItemPanel seletedPanel)
+	{
+		if (_curSelectedPanel != null)
+		{
+			_curSelectedPanel.equipOutline.enabled = false;
+		}
+		if (_curSelectedPanel == seletedPanel)
+		{
+			UnEquipItem(seletedPanel);
+			return;
+		}
+
+		_curSelectedPanel = seletedPanel;
+		_curSelectedPanel.equipOutline.enabled = true;
+
+		_inventoryView.Refresh();
+	}
+
+	public void UnEquipItem(ItemPanel equippedPanel)
+	{
+		_curSelectedPanel = null;
+		equippedPanel.equipOutline.enabled = false;
+	}
+
+
+	public Action GetInventoryShowFunc()
+	{
+		if (_inventoryView == null)
+			InitializeStorageData();
+		return _inventoryView.ShowStorage;
+	}
+
+	public Action<float> GetScrollFunc()
+	{
+		return ScrollWhell;
+	}
+
+
+	public Action<int> GetShortcutFunc()
+	{
+		return SwitchSlot;
+	}
+
+	//public Action<ItemPanel> GetItemUseFunc()
+	//{
+	//	return _inventoryModel.UseConsumableItem(_curSelectedPanel);
+	//}
+
+	public List<ItemSlotInfo> GetItemList() => items;
 }

@@ -9,6 +9,7 @@ public class ItemSlotUI : MonoBehaviour
 	public Button button;
 	public Image icon;
 	public TextMeshProUGUI quantityText;
+
 	private ItemSlot curSlot;
 	private Outline outline;
 

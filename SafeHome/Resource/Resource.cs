@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Resource : MonoBehaviour
 {
-	public ItemData itemToGive; 
-	public int quantityPerHit = 1;
-
+	public ItemData itemToGive;
 	public ParticleSystem particle;
+
 	private ResourceRandomSpawner spawner;
 
+	public int quantityPerHit = 1;
 	private int capacity;
 
     private void Awake()
@@ -48,6 +48,5 @@ public class Resource : MonoBehaviour
 			gameObject.SetActive(false);
 			spawner.Respawn(this.gameObject);
 		}
-
     }
 }
